@@ -22,8 +22,7 @@ var gr = new Vue({
     ],
     itemsInList: [
 
-    ],
-    listTotal: 0.00
+    ]
   },
   methods: {
     addNewItem: function(){
@@ -63,12 +62,13 @@ var gr = new Vue({
     }
   },
   computed: {
-    getListTotal: function(){
-      var ret = 0.00;
+    listTotal: function(){
+      var listTotal = 0.00;
       this.itemsInList.forEach(function(item){
-        ret += item.price;
+        listTotal += item.price;
       });
-      return ret;
+      console.log(listTotal);
+      return Math.round(listTotal);
     }
   }
 });
