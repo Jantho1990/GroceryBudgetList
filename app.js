@@ -35,11 +35,15 @@ var gr = new Vue({
       }
     },
     deleteItem: function(event){
-      window.alert(event.originalTarget.parentNode.id);
-      console.log(event);
-      // this.grItems.forEach(function(item){
-      //   if(item.name === event.target.name)
-      // });
+      // window.alert(event.originalTarget.parentNode.id);
+      console.log(this.grItems);
+      var grItems = this.grItems;
+      grItems.forEach(function(item, i){
+        if(item.name === event.originalTarget.parentNode.id){
+          //var index = this.grItems.indexOf(item);
+          grItems.splice(i, 1);
+        }
+      });
     }
   }
 });
