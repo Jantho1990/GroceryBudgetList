@@ -3,21 +3,27 @@ var gr = new Vue({
   data: {
     newItem: '',
     newItemPrice: 0.00,
-    listTotal: 0.00,
     grItems: [
       {
         name: 'Milk',
-        price: 2.99
+        price: 2.99,
+        checked: false
       },
       {
         name: 'Formula',
-        price: 16.00
+        price: 16.00,
+        checked: false
       },
       {
         name: 'Golden Crisp',
-        price: 3.29
+        price: 3.29,
+        checked: false
       }
-    ]
+    ],
+    itemsInList: [
+
+    ],
+    listTotal: 0.00
   },
   methods: {
     addNewItem: function(){
@@ -35,8 +41,6 @@ var gr = new Vue({
       }
     },
     deleteItem: function(event){
-      // window.alert(event.originalTarget.parentNode.id);
-      console.log(this.grItems);
       var grItems = this.grItems;
       grItems.forEach(function(item, i){
         if(item.name === event.originalTarget.parentNode.id){
@@ -44,6 +48,27 @@ var gr = new Vue({
           grItems.splice(i, 1);
         }
       });
+    },
+    addItemToList: function(event){
+      var itemsInList = this.itemsInList;
+      var grItems = this.grItems;
+      grItems.forEach(function(item, i){
+        if(item.name === event.originalTarget.parentNode.id){
+          itemsInList.push({
+            name: item.name,
+            price: item.price
+          });
+        }
+      });
+    }
+  },
+  computed: {
+    getListTotal: function(){
+      var ret = 0.00;
+      this.itemsInList.forEach(function(item){
+        ret += item.price;
+      });
+      return ret;
     }
   }
 });

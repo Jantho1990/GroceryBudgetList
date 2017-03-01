@@ -18,8 +18,8 @@
         <div class="col-md-6 listItems">
           <ul>
             <li v-for="grItem in grItems" :id="grItem.name">
-              <input type="checkbox" name="checkbox">
-              <label for="checkbox"></label>
+              <input type="checkbox" name="checkbox" v-model="grItem.checked" v-on:click="addItemToList">
+              <label for="checkbox">{{ grItem.checked }}</label>
               <label>{{ grItem.name }}</label>
               <label>{{ grItem.price }}</label>
               <button type="button" v-on:click="deleteItem">X</button>
@@ -27,7 +27,12 @@
           </ul>
         </div>
         <div class="col-md-6 listTotal">
-
+          <ul>
+            <li v-for="itemInList in itemsInList">
+              <p>{{ itemInList.name }}</p>
+              <p>{{ itemInList.price }}</p>
+            </li>
+          </ul>
         </div>
       </div>
     </main>
