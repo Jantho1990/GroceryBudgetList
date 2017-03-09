@@ -28,7 +28,6 @@ var gr = new Vue({
     addNewItem: function(){
       var newItem = this.newItem.trim();
       var newItemPrice = this.newItemPrice;
-      console.log(newItemPrice);
       if(newItem && newItemPrice){
         this.grItems.push({
           name: newItem,
@@ -49,7 +48,6 @@ var gr = new Vue({
       });
     },
     toggleItemOnList: function(event){
-      console.log(this);
       var itemsInList = this.itemsInList;
       var grItems = this.grItems;
       grItems.forEach(function(item, i){
@@ -71,14 +69,9 @@ var gr = new Vue({
       });
     },
     addItemToList: function(item, list){
-      console.log(item);
-      console.log(list);
       list.push(item);
-      console.log(list);
     },
     removeItemFromList: function(i, list){
-      console.log(i);
-      console.log(list);
       list.splice(i, 1);
     }
   },
@@ -89,7 +82,8 @@ var gr = new Vue({
         listTotal += item.price;
       });
       console.log(listTotal);
-      return Math.round(listTotal);
+      // return Math.round(listTotal);
+      return listTotal;
     }
   }
 });
