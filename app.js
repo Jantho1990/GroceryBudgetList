@@ -48,17 +48,38 @@ var gr = new Vue({
         }
       });
     },
-    addItemToList: function(event){
+    toggleItemOnList: function(event){
+      console.log(this);
       var itemsInList = this.itemsInList;
       var grItems = this.grItems;
       grItems.forEach(function(item, i){
         if(item.name === event.originalTarget.parentNode.id){
-          itemsInList.push({
-            name: item.name,
-            price: item.price
-          });
+          switch(item.checked){
+            case false:
+              gr.addItemToList({
+                name: item.name,
+                price: item.price
+              }, itemsInList);
+              break;
+            case true:
+              gr.removeItemFromList(i, itemsInList);
+              break;
+            default:
+              alert('Item could not be processed. :(');
+          }
         }
       });
+    },
+    addItemToList: function(item, list){
+      console.log(item);
+      console.log(list);
+      list.push(item);
+      console.log(list);
+    },
+    removeItemFromList: function(i, list){
+      console.log(i);
+      console.log(list);
+      list.splice(i, 1);
     }
   },
   computed: {

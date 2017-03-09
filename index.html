@@ -18,8 +18,8 @@
         <div class="col-md-6 listItems">
           <ul>
             <li v-for="grItem in grItems" :id="grItem.name">
-              <input type="checkbox" name="checkbox" v-model="grItem.checked" v-on:click="addItemToList">
-              <label for="checkbox">{{ grItem.checked }}</label>
+              <input type="checkbox" name="checkbox" v-model="grItem.checked" v-on:click="toggleItemOnList">
+              <!-- <label for="checkbox">{{ grItem.checked }}</label> -->
               <label>{{ grItem.name }}</label>
               <label>{{ grItem.price }}</label>
               <button type="button" v-on:click="deleteItem">X</button>
